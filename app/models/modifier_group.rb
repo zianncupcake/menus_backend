@@ -1,5 +1,5 @@
 class ModifierGroup < ApplicationRecord
-  has_one :item_modifier_group
+  has_one :item_modifier_group, dependent: :destroy 
   has_many :modifiers, dependent: :destroy 
 
   validates :identifier, presence: true, uniqueness: true 
