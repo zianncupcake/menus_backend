@@ -31,8 +31,8 @@ section2 = Section.create(
 )
 
 # Menu has many Sections via MenuSections
-MenuSection.create(menu: menu, section: section1, display_order: 1)
-MenuSection.create(menu: menu, section: section2, display_order: 2)
+MenuSection.create(menu: menu, section: section1, display_order: 2)
+MenuSection.create(menu: menu, section: section2, display_order: 1)
 
 # Create 3 Non-Configurable Items in Section 1
 item1 = Item.create(type: "Product", identifier: "plain_pizza", label: "Plain Pizza", description: "A simple pizza with cheese.", price: 9.00)
@@ -44,9 +44,9 @@ configurable_item1 = Item.create(type: "Product", identifier: "customizable_pizz
 # configurable_item2 = Item.create(type: "Product", identifier: "customizable_salad", label: "Customizable Salad", description: "Build your own salad.", price: 7.00)
 
 # Section has many Items via SectionItems
-SectionItem.create(section: section1, item: item1, display_order: 1)
-SectionItem.create(section: section1, item: item2, display_order: 2)
-SectionItem.create(section: section1, item: item3, display_order: 3)
+SectionItem.create(section: section1, item: item1, display_order: 3)
+SectionItem.create(section: section1, item: item2, display_order: 1)
+SectionItem.create(section: section1, item: item3, display_order: 2)
 SectionItem.create(section: section2, item: configurable_item1)
 # SectionItem.create(section: section2, item: configurable_item2, display_order: 2)
 
@@ -71,10 +71,10 @@ component2 = Item.create(type: "Component", identifier: "mushrooms", label: "Mus
 component3 = Item.create(type: "Component", identifier: "onions", label: "Onions", description: "Onions for pizza topping", price: 3.00)
 component4 = Item.create(type: "Component", identifier: "sausages", label: "Sausages", description: "Sausages for pizza topping", price: 3.00)
 
-Modifier.create(modifier_group: topping_group, item: component1, price_override: 0)
-Modifier.create(modifier_group: topping_group, item: component2, price_override: 0)
-Modifier.create(modifier_group: topping_group, item: component3, price_override: 0)
-Modifier.create(modifier_group: topping_group, item: component4, price_override: 0)
+Modifier.create(modifier_group: topping_group, item: component1, price_override: 0, display_order: 4)
+Modifier.create(modifier_group: topping_group, item: component2, price_override: 0, display_order: 1)
+Modifier.create(modifier_group: topping_group, item: component3, price_override: 0, display_order: 2)
+Modifier.create(modifier_group: topping_group, item: component4, price_override: 0, display_order: 3)
 
 # Create Modifiers for Sauce (Pizza)
 component5 = Item.create(type: "Component", identifier: "tomato_sauce", label: "Tomato Sauce", description: "Tomato sauce for pizza sauce", price: 3.00)
