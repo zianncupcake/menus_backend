@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_03_27_141109) do
+ActiveRecord::Schema[7.2].define(version: 2025_03_28_140027) do
   create_table "item_modifier_groups", force: :cascade do |t|
     t.integer "item_id", null: false
     t.integer "modifier_group_id", null: false
@@ -63,7 +63,7 @@ ActiveRecord::Schema[7.2].define(version: 2025_03_27_141109) do
     t.integer "item_id", null: false
     t.integer "modifier_group_id", null: false
     t.integer "display_order", default: 0
-    t.integer "default_quality"
+    t.integer "default_quality", default: 0
     t.float "price_override"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
