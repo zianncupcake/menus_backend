@@ -1,6 +1,5 @@
 class Item < ApplicationRecord
   has_one :section_item, dependent: :destroy  
-  has_one :modifier, dependent: :destroy 
   has_many :item_modifier_groups, dependent: :destroy
   has_many :modifier_groups, through: :item_modifier_groups
 
