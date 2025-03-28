@@ -5,6 +5,5 @@ module Types
     edge_type_class(Types::BaseEdge)
     connection_type_class(Types::BaseConnection)
     field_class Types::BaseField
-    field_camelize false
   end
 end
