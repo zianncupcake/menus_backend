@@ -1,9 +1,10 @@
-# Clear existing data
+# Clear existing data in proper order
 ItemModifierGroup.destroy_all
 SectionItem.destroy_all
 MenuSection.destroy_all
 Modifier.destroy_all
 ModifierGroup.destroy_all
+Item.destroy_all
 Section.destroy_all
 Menu.destroy_all
 
@@ -39,15 +40,15 @@ item2 = Item.create(type: "Product", identifier: "caesar_salad", label: "Caesar 
 item3 = Item.create(type: "Product", identifier: "garlic_bread", label: "Garlic Bread", description: "Toasted bread with garlic and herbs.", price: 4.00)
 
 # Create 2 Configurable Items in Section 2
-configurable_item1 = Item.create(type: "Component", identifier: "customizable_pizza", label: "Customizable Pizza", description: "Build your own pizza.", price: 10.00)
-configurable_item2 = Item.create(type: "Component", identifier: "customizable_salad", label: "Customizable Salad", description: "Build your own salad.", price: 7.00)
+configurable_item1 = Item.create(type: "Product", identifier: "customizable_pizza", label: "Customizable Pizza", description: "Build your own pizza.", price: 10.00)
+# configurable_item2 = Item.create(type: "Product", identifier: "customizable_salad", label: "Customizable Salad", description: "Build your own salad.", price: 7.00)
 
 # Section has many Items via SectionItems
 SectionItem.create(section: section1, item: item1, display_order: 1)
 SectionItem.create(section: section1, item: item2, display_order: 2)
 SectionItem.create(section: section1, item: item3, display_order: 3)
-SectionItem.create(section: section2, item: configurable_item1, display_order: 1)
-SectionItem.create(section: section2, item: configurable_item2, display_order: 2)
+SectionItem.create(section: section2, item: configurable_item1)
+# SectionItem.create(section: section2, item: configurable_item2, display_order: 2)
 
 # Create Modifier Groups for the Configurable Items (Pizza)
 topping_group = ModifierGroup.create(
@@ -64,48 +65,56 @@ sauce_group = ModifierGroup.create(
   selection_required_max: 1
 )
 
-# Create Modifiers for Toppings (Pizza)
-Modifier.create(label: "Pepperoni", modifier_group: topping_group)
-Modifier.create(label: "Mushrooms", modifier_group: topping_group)
-Modifier.create(label: "Onions", modifier_group: topping_group)
-Modifier.create(label: "Sausage", modifier_group: topping_group)
+# Create Modifiers + Item (Component) for Toppings (Pizza)
+component1 = Item.create(type: "Component", identifier: "pepperoni", label: "Pepperoni", description: "Pepperoni for pizza topping", price: 3.00)
+component2 = Item.create(type: "Component", identifier: "mushrooms", label: "Mushrooms", description: "Mushrooms for pizza topping", price: 3.00)
+component3 = Item.create(type: "Component", identifier: "onions", label: "Onions", description: "Onions for pizza topping", price: 3.00)
+component4 = Item.create(type: "Component", identifier: "sausages", label: "Sausages", description: "Sausages for pizza topping", price: 3.00)
+
+Modifier.create(modifier_group: topping_group, item: component1, price_override: 0)
+Modifier.create(modifier_group: topping_group, item: component2, price_override: 0)
+Modifier.create(modifier_group: topping_group, item: component3, price_override: 0)
+Modifier.create(modifier_group: topping_group, item: component4, price_override: 0)
 
 # Create Modifiers for Sauce (Pizza)
-Modifier.create(label: "Tomato Sauce", modifier_group: sauce_group)
-Modifier.create(label: "BBQ Sauce", modifier_group: sauce_group)
+component5 = Item.create(type: "Component", identifier: "tomato_sauce", label: "Tomato Sauce", description: "Tomato sauce for pizza sauce", price: 3.00)
+component6 = Item.create(type: "Component", identifier: "bbq_sauce", label: "BBQ Sauce", description: "BBQ sauce for pizza sauce", price: 3.00)
+
+Modifier.create(modifier_group: sauce_group, item: component5, price_override: 0)
+Modifier.create(modifier_group: sauce_group, item: component6, price_override: 0)
 
 # Item has many Modifier Groups via Item Modifier Groups (Pizza)
 ItemModifierGroup.create(item: configurable_item1, modifier_group: topping_group)
 ItemModifierGroup.create(item: configurable_item1, modifier_group: sauce_group)
 
-# Create Modifier Groups for the Configurable Items (Salad)
-topping_group_salad = ModifierGroup.create(
-  identifier: "choose_salad_toppings",
-  label: "Choose Salad Toppings",
-  selection_required_min: 0,
-  selection_required_max: 3
-)
+# # Create Modifier Groups for the Configurable Items (Salad)
+# topping_group_salad = ModifierGroup.create(
+#   identifier: "choose_salad_toppings",
+#   label: "Choose Salad Toppings",
+#   selection_required_min: 0,
+#   selection_required_max: 3
+# )
 
-dressing_group = ModifierGroup.create(
-  identifier: "choose_dressing",
-  label: "Choose Dressing",
-  selection_required_min: 1,
-  selection_required_max: 1
-)
+# dressing_group = ModifierGroup.create(
+#   identifier: "choose_dressing",
+#   label: "Choose Dressing",
+#   selection_required_min: 1,
+#   selection_required_max: 1
+# )
 
-# Create Modifiers for Toppings (Salad)
-Modifier.create(label: "Lettuce", modifier_group: topping_group_salad)
-Modifier.create(label: "Tomatoes", modifier_group: topping_group_salad)
-Modifier.create(label: "Cucumbers", modifier_group: topping_group_salad)
-Modifier.create(label: "Olives", modifier_group: topping_group_salad)
+# # Create Modifiers for Toppings (Salad)
+# Modifier.create(label: "Lettuce", modifier_group: topping_group_salad)
+# Modifier.create(label: "Tomatoes", modifier_group: topping_group_salad)
+# Modifier.create(label: "Cucumbers", modifier_group: topping_group_salad)
+# Modifier.create(label: "Olives", modifier_group: topping_group_salad)
 
-# Create Modifiers for Dressing (Salad)
-Modifier.create(label: "Ranch Dressing", modifier_group: dressing_group)
-Modifier.create(label: "Italian Dressing", modifier_group: dressing_group)
-Modifier.create(label: "Balsamic Vinaigrette", modifier_group: dressing_group)
+# # Create Modifiers for Dressing (Salad)
+# Modifier.create(label: "Ranch Dressing", modifier_group: dressing_group)
+# Modifier.create(label: "Italian Dressing", modifier_group: dressing_group)
+# Modifier.create(label: "Balsamic Vinaigrette", modifier_group: dressing_group)
 
-# Item has many Modifier Groups via Item Modifier Groups (Salad)
-ItemModifierGroup.create(item: configurable_item2, modifier_group: topping_group_salad)
-ItemModifierGroup.create(item: configurable_item2, modifier_group: dressing_group)
+# # Item has many Modifier Groups via Item Modifier Groups (Salad)
+# ItemModifierGroup.create(item: configurable_item2, modifier_group: topping_group_salad)
+# ItemModifierGroup.create(item: configurable_item2, modifier_group: dressing_group)
 
 puts "Dummy data seeded successfully!"
