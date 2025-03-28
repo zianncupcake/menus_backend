@@ -6,7 +6,8 @@ module Resolvers
     argument :id, ID, required: true
 
     def resolve(id:)
-      Menu.find_by(id: id)
+      Menu.includes(menu_sections: :section)
+           .find_by(id: id)
     end
   end
 end

@@ -6,6 +6,12 @@ module Types
     field :state, String, null: false
     field :start_date, GraphQL::Types::ISO8601Date, null: false
     field :end_date, GraphQL::Types::ISO8601Date, null: false
-    field :sections, [Types::SectionType], null: true  
+    field :sections, [Types::SectionType], null: false 
+
+    def sections
+      object.menu_sections
+            .order(:display_order)
+            .map(&:section)
+    end
   end
 end
