@@ -46,4 +46,5 @@ test:
   database: menus_backend_test
 
 production:
+  adapter: postgresql
   url: <%= ENV['DATABASE_URL'] %>
