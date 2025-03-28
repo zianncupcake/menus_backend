@@ -1,0 +1,12 @@
+module Resolvers
+  class MenuResolver < BaseResolver
+    type Types::MenuType, null: true
+    description "Returns a single menu by ID"
+
+    argument :id, ID, required: true
+
+    def resolve(id:)
+      Menu.find_by(id: id)
+    end
+  end
+end
