@@ -6,7 +6,7 @@ module Types
     field :state, String, null: false
     field :start_date, GraphQL::Types::ISO8601Date, null: false
     field :end_date, GraphQL::Types::ISO8601Date, null: false
-    field :sections, [Types::SectionType], null: false 
+    field :sections, [Types::SectionType], null: true 
 
     def sections
       object.menu_sections

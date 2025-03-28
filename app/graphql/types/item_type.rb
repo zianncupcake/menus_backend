@@ -7,6 +7,6 @@ module Types
     field :price, Float, null: false
     field :type, String, null: false
     field :modifier, Types::ModifierType, null: true          
-    field :modifier_groups, [Types::ModifierGroupType], null: true             
+    field :modifier_groups, [Types::ModifierGroupType], null: true        
   end
 end

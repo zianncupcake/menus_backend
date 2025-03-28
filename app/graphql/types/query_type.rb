@@ -7,8 +7,10 @@ module Types
     field :menu, resolver: Resolvers::MenuResolver
 
     # section
-    field :sections, resolver: Resolvers::SectionsResolver
     field :section, resolver: Resolvers::SectionResolver
+
+    # item
+    field :item, resolver: Resolvers::ItemResolver
 
   end
 end

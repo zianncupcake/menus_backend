@@ -1,7 +1,7 @@
 module Resolvers
   class MenuResolver < BaseResolver
     type Types::MenuType, null: true
-    description "Returns a single menu by ID"
+    description "Returns a single menu by ID + sections"
 
     argument :id, ID, required: true
 
