@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_03_28_212610) do
+ActiveRecord::Schema[7.2].define(version: 2025_03_29_203113) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -39,6 +39,7 @@ ActiveRecord::Schema[7.2].define(version: 2025_03_28_212610) do
     t.integer "display_order", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["menu_id", "section_id"], name: "unique_menu_section_association", unique: true
     t.index ["menu_id"], name: "index_menu_sections_on_menu_id"
     t.index ["section_id"], name: "index_menu_sections_on_section_id"
   end

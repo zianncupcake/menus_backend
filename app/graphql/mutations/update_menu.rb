@@ -2,6 +2,7 @@ module Mutations
   class UpdateMenu < BaseMutation
     argument :id, ID, required: true
 
+    argument :identifier, String, required: false
     argument :label, String, required: false
     argument :state, String, required: false  
     argument :start_date, GraphQL::Types::ISO8601Date, required: false

@@ -1,4 +1,3 @@
-# app/graphql/types/section_type.rb
 module Types
   class SectionType < BaseObject
     field :id, ID, null: false

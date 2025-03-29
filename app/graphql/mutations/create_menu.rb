@@ -10,7 +10,7 @@ module Mutations
     field :errors, [String], null: false
 
     def resolve(identifier:, label:, state:, start_date:, end_date:)
-      menu = ::Menu.new(
+      menu = Menu.new(
         identifier: identifier,
         label: label,
         state: state,
