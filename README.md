@@ -1,24 +1,48 @@
-# README
+## 📌 Prerequisites
+Ensure you have the following installed:
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Ruby 3.3.3
 
-Things you may want to cover:
+Rails 7.2.2.1
 
-* Ruby version
+PostgreSQL >= 12
 
-* System dependencies
+Bundler (gem install bundler)
 
-* Configuration
+## 🔧 Installation
+Clone the Repository (master branch)
+```
+git clone https://github.com/zianncupcake/menus_backend
+cd menus_backend
+```
 
-* Database creation
+Install Dependencies
+```
+bundle install
+```
 
-* Database initialization
+## 🛠 Database Setup
+Create and migrate the database
+```
+rails db:create
+rails db:migrate
+rails db:seed 
+```
 
-* How to run the test suite
+Verify database connection
+```
+rails db:setup
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+## 🚀 Running the Application
+Start the server 
+```
+rails server
+```
+Access the API
+- Access GraphiQL IDE at: http://localhost:3000/graphiql
+- endpoint: http://localhost:3000/graphql
 
-* Deployment instructions
-
-* ...
+## 🌐 Deployment
+The API is deployed on Heroku
+- Access the endpoint at: [🔗 Hosted endpoint](https://damp-eyrie-40872-66f66d973e5e.herokuapp.com/graphql)
