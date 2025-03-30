@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_03_29_203113) do
+ActiveRecord::Schema[7.2].define(version: 2025_03_29_232135) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -19,6 +19,7 @@ ActiveRecord::Schema[7.2].define(version: 2025_03_29_203113) do
     t.bigint "modifier_group_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["item_id", "modifier_group_id"], name: "unique_item_modifier_association", unique: true
     t.index ["item_id"], name: "index_item_modifier_groups_on_item_id"
     t.index ["modifier_group_id"], name: "index_item_modifier_groups_on_modifier_group_id"
   end
@@ -82,6 +83,7 @@ ActiveRecord::Schema[7.2].define(version: 2025_03_29_203113) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["item_id"], name: "index_section_items_on_item_id"
+    t.index ["section_id", "item_id"], name: "unique_section_item_association", unique: true
     t.index ["section_id"], name: "index_section_items_on_section_id"
   end
 
