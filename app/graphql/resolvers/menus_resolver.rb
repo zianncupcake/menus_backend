@@ -6,7 +6,7 @@ module Resolvers
     argument :is_active, Boolean, required: false
 
     def resolve(is_active: nil)
-      is_active.nil? ? Menu.all  : Menu.all.where(is_active: is_active)
+      is_active.nil? ? Menu.all  : Menu.all.where(state: "active")
     end
   end
 end
