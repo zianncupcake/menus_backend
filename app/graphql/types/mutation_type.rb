@@ -32,5 +32,6 @@ module Types
 
     #item --> modifier group
     field :add_modifier_group_to_item, mutation: Mutations::AddModifierGroupToItem
+    field :remove_modifier_group_from_item, mutation: Mutations::RemoveModifierGroupFromItem
   end
 end
