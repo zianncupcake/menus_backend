@@ -71,7 +71,7 @@ component2 = Item.create(type: "Component", identifier: "mushrooms", label: "Mus
 component3 = Item.create(type: "Component", identifier: "onions", label: "Onions", description: "Onions for pizza topping", price: 3.00)
 component4 = Item.create(type: "Component", identifier: "sausages", label: "Sausages", description: "Sausages for pizza topping", price: 3.00)
 
-Modifier.create(modifier_group: topping_group, item: component1, price_override: 0, display_order: 4)
+Modifier.create(modifier_group: topping_group, item: component1, price_override: 1, display_order: 4)
 Modifier.create(modifier_group: topping_group, item: component2, price_override: 0, display_order: 1)
 Modifier.create(modifier_group: topping_group, item: component3, price_override: 0, display_order: 2)
 Modifier.create(modifier_group: topping_group, item: component4, price_override: 0, display_order: 3)
