@@ -1,6 +1,11 @@
 # 🍽️ Menu API with GraphQL
 A Ruby on Rails app for managing restaurant menus with nested sections, items, modifier groups and modifiers. Built with GraphQL and deployed on Heroku.
 
+Functions include CRUD operations for:
+- Menus
+- Sections
+- Items (including modifier groups and their modifiers)
+
 ## 📌 Prerequisites
 Ensure you have the following installed:
 
